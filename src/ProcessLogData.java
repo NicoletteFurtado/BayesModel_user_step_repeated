@@ -7,7 +7,8 @@ public class ProcessLogData {
 
 	public void updateLogData(StudentLogData student, InitMaps initMaps) {
 		removeExtraAttempts(student);
-		repeatAttempts(student, initMaps);
+		// repeatAttempts(student, initMaps);
+		repeatAttempts2(student, initMaps);
 	}
 
 	// remove all attempts except the first
@@ -60,6 +61,9 @@ public class ProcessLogData {
 			System.out.println("i=" + i);
 			ArrayList<String> wordsInSentence = initMaps.getSentenceToWords().get(
 					AnalysisUtil.convertStringToKey(student.getSentenceList().get(i)));
+			// ////////
+
+			// ////////
 			System.out.println(AnalysisUtil.convertStringToKey(student.getSentenceList().get(i)));
 			System.out.println("/////// " + wordsInSentence);
 			if (!wordsInSentence.contains(Constants.DEFAULT_WORD)) {
@@ -95,5 +99,67 @@ public class ProcessLogData {
 		student.setInputData(inputDataNew);
 		System.out.println("final attempt=" + Arrays.toString(student.getVerificationList().toArray()));
 		System.out.println("final attempt=" + student.getVerificationList().size());
+	}
+
+	public void repeatAttempts2(StudentLogData student, InitMaps initMaps) {
+		int j = 0; // arraylist for all steps
+		int k = 0;// arraylist per step
+		ArrayList<String> actionListNew = new ArrayList<String>();
+		ArrayList<String> verificationListNew = new ArrayList<String>();
+		ArrayList<String> sentenceListNew = new ArrayList<String>();
+		ArrayList<Integer> userStepNew = new ArrayList<Integer>();
+		ArrayList<String> inputDataNew = new ArrayList<String>();
+
+		for (int i = 0; i < UPDATED_lIST_SIZE; i++) {
+			// get the skills for this sentence
+			System.out.println("i=" + i);
+			System.out.println(AnalysisUtil.convertStringToKey(student.getSentenceList().get(i)));
+			// System.out.println("/////// " + wordsInSentence);
+			// if (!wordsInSentence.contains(Constants.DEFAULT_WORD)) {
+			// get all data for the first attempt
+			String currSentence = student.getSentenceList().get(i);
+			String currVerification = student.getVerificationList().get(i);
+			String currAction = student.getActionList().get(i);
+			Integer currUserStep = student.getUserStep().get(i);
+			String currInputData = student.getInputData().get(i);
+			// you have the first attempt
+			// add the data at point i wordsInSentence number of times
+
+			// j = 0;
+			// while (j < initMaps.getSentenceToActions().get(AnalysisUtil.convertStringToKey(currSentence)).size()) {
+			// // all
+			// the
+			// steps
+			k = 0;
+			while (k < initMaps.getSentenceToActions().get(AnalysisUtil.convertStringToKey(currSentence))
+					.get(currUserStep - 1).size()) {
+				// for (int j = 0; j < (wordsInSentence.size() - 1); j++) {
+				// System.out.println("k=" + k);
+				// add at i th position, k times
+				sentenceListNew.add(currSentence);
+				verificationListNew.add(currVerification);
+				actionListNew.add(currAction);
+				userStepNew.add(currUserStep);
+				inputDataNew.add(i, currInputData);
+				// inputDataNew.add(i, currInputData);
+				// System.out.println("repeated step "
+				// + currUserStep
+				// + "of sentence "
+				// + currSentence
+				// + " for word "
+				// + initMaps.getSentenceToActions().get(AnalysisUtil.convertStringToKey(currSentence))
+				// .get(currUserStep - 1).get(k));
+				k++;
+			}
+			// }
+			// }
+		}
+		student.setVerificationList(verificationListNew);
+		student.setActionList(actionListNew);
+		student.setSentenceList(sentenceListNew);
+		student.setUserStep(userStepNew);
+		student.setInputData(inputDataNew);
+		// System.out.println("final attempt=" + Arrays.toString(student.getVerificationList().toArray()));
+		// System.out.println("final attempt=" + student.getVerificationList().size());
 	}
 }
