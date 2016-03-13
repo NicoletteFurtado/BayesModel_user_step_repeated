@@ -252,6 +252,10 @@ public class KnowledgeTracer {
 				objectsMoved[i] = "pen";
 			} else if (objectsMoved[i].contains("corralDoor")) {
 				objectsMoved[i] = "corral";
+			} else if (objectsMoved[i].contains("pumpkinPatch")) {
+				objectsMoved[i] = "pumpkins";
+			} else if (objectsMoved[i].contains("farmerFall")) {
+				objectsMoved[i] = "farmer";
 			}
 		}
 		// get the action for this step
