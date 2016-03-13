@@ -31,7 +31,7 @@ public class WriteOutput3 {
 		// "C:\\Users\\Nicolette\\OneDrive\\Documents\\EMBRACE\\Analysis\\With user step\\output_2016_the_best_farm_award.csv";
 		// String outputFile =
 		// "C:\\Users\\Nicolette\\OneDrive\\Documents\\EMBRACE\\Analysis\\With user step\\output_2016_chapters_1_7.csv";
-		String outputFile = "C:\\Users\\Nicolette\\OneDrive\\Documents\\EMBRACE\\Analysis\\With user step\\output_P0017EE_cleaning_up_actions.csv";
+		String outputFile = Constants.OUTPUT_FILE;
 		try {
 			FileWriter fw = new FileWriter(outputFile);
 			writer = new BufferedWriter(fw);

@@ -51,14 +51,14 @@ public class ReadFiles {
 		return studentLogData;
 	}
 
-	public InitMaps readPropertiesFile(String propertiesFile) {
+	public InitMaps readPropertiesFile(String wordsPropertiesFile, String actionPropertiesFile) {
 		LinkedHashMap<String, String> sentenceToText = new LinkedHashMap<String, String>();
 		HashMap<String, ArrayList<String>> sentenceToWords = new HashMap<String, ArrayList<String>>();
 		Properties prop = new Properties();
 		InitMaps initMaps = new InitMaps();
 		String valAdd = "";
 		try {
-			prop.load(ReadFiles.class.getClassLoader().getResourceAsStream(propertiesFile));
+			prop.load(ReadFiles.class.getClassLoader().getResourceAsStream(wordsPropertiesFile));
 			for (String key : prop.stringPropertyNames()) {
 				String value = prop.getProperty(key);
 				String[] valArray = value.split("\\#");
@@ -78,7 +78,7 @@ public class ReadFiles {
 			}
 			initMaps.setSentenceToText(sentenceToText);
 			initMaps.setSentenceToWords(sentenceToWords);
-			initMaps.setSentenceToActions(readPropertiesFileAction("cleaning_up_actions.properties"));
+			initMaps.setSentenceToActions(readPropertiesFileAction(actionPropertiesFile));
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -121,8 +121,8 @@ public class ReadFiles {
 			}
 			// initMaps.setSentenceToText(sentenceToText);
 			// initMaps.setSentenceToWords(sentenceToActions);
-			System.out.println("mmmmmmmmmmmm");
-			System.out.println(sentenceToActions);
+			// System.out.println("mmmmmmmmmmmm");
+			// System.out.println(sentenceToActions);
 		} catch (Exception e) {
 			System.out.println(e);
 		}

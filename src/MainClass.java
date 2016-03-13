@@ -8,7 +8,7 @@ public class MainClass {
 
 		ReadFiles reader = new ReadFiles();
 		// read properties file into LinkedHashMap
-		InitMaps initMaps = reader.readPropertiesFile("cleaning_up_words.properties");
+		InitMaps initMaps = reader.readPropertiesFile(Constants.WORDS_FILE, Constants.ACTION_FILE);
 		// InitMaps initMaps = reader.readPropertiesFile("the_contest_sentences.properties");
 		// InitMaps initMaps = reader.readPropertiesFile("getting_ready.properties");
 		// InitMaps initMaps = reader.readPropertiesFile("who_is_the_best_animal.properties");
@@ -45,13 +45,16 @@ public class MainClass {
 		// .readLogData("C:\\Users\\Nicolette\\OneDrive\\Documents\\EMBRACE\\Analysis\\With user step\\log_data_B0039EE_chapters_1_6.csv");
 		// StudentLogData studentLogData = reader
 		// .readLogData("C:\\Users\\Nicolette\\OneDrive\\Documents\\EMBRACE\\Analysis\\With user step\\log data by student\\log_data_B009BE.csv");
-		StudentLogData studentLogData = reader
-				.readLogData("C:\\Users\\Nicolette\\OneDrive\\Documents\\EMBRACE\\Analysis\\With user step\\log data by student\\log_data_P0017EE_cleaning_up.csv");
+		// StudentLogData studentLogData = reader
+		// .readLogData("C:\\Users\\Nicolette\\OneDrive\\Documents\\EMBRACE\\Analysis\\With user step\\log data by student\\log_data_B0038EE_chapters_1_7.csv");
+		StudentLogData studentLogData = reader.readLogData(Constants.STUDENT_LOG_DATA);
 
 		// ArrayList<String> inputData = reader.readInputData("inputdata/text.txt", studentLogData);
-		ArrayList<String> inputData = reader.readInputData("inputdata/input_data_P0017EE", studentLogData);
+		ArrayList<String> inputData = reader.readInputData(Constants.INPUT_DATA, studentLogData);
 		studentLogData.setInputData(inputData);
 		System.out.println(Arrays.toString(inputData.toArray()));
+		System.out.println(inputData.size());
+		System.out.println(studentLogData.getSentenceList().size());
 
 		// process log data
 		ProcessLogData processData = new ProcessLogData();
@@ -107,12 +110,12 @@ public class MainClass {
 		skillSet.setSkillMap(skillMap);
 		// calculate
 		KnowledgeTracer k = new KnowledgeTracer();
-		// SkillSet skillSet1 = k.calculateSkill(studentLogData, skillSet, initMaps);
+		SkillSet skillSet1 = k.calculateSkill(studentLogData, skillSet, initMaps);
 
 		OutputLists outputLists = new OutputLists();
-		// outputLists.createLists(studentLogData, skillSet1, initMaps);
+		outputLists.createLists(studentLogData, skillSet1, initMaps);
 
 		WriteOutput3 writeOutput = new WriteOutput3();
-		// writeOutput.writeCSV(outputLists, studentLogData);
+		writeOutput.writeCSV(outputLists, studentLogData);
 	}
 }
