@@ -29,6 +29,7 @@ public class ProcessLogData {
 				actionListNew.add(student.getActionList().get(i));
 				sentenceListNew.add(student.getSentenceList().get(i));
 				userStepNew.add(student.getUserStep().get(i));
+				System.out.println("input data size=" + student.getInputData().size());
 				inputDataNew.add(student.getInputData().get(i));
 
 				System.out.println("added step " + student.getUserStep().get(i) + "of sentence "
