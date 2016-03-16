@@ -19,7 +19,7 @@ public class Constants {
 
 	// files
 	public static String STUDENT_LOG_DATA = "C:\\Users\\Nicolette\\OneDrive\\Documents\\EMBRACE\\Analysis\\With user step\\log data by student\\log_data_P0017EE_chapters_1_7.csv";
-	public static String OUTPUT_FILE = "C:\\Users\\Nicolette\\OneDrive\\Documents\\EMBRACE\\Analysis\\With user step\\output_P0017EE_repeated.csv";
+	public static String OUTPUT_FILE = "C:\\Users\\Nicolette\\OneDrive\\Documents\\EMBRACE\\Analysis\\With user step\\output_P0017EE_repeated_1.csv";
 	public static String INPUT_DATA = "inputdata/input_data_P0017EE_the_best_farm"; // moves
 	public static String ACTION_FILE = "the_best_farm_actions.properties";
 	public static String WORDS_FILE = "the_best_farm_words.properties";
